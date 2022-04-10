@@ -1,0 +1,22 @@
+<p>add-task works!</p>
+<div class="card shadow text-center mb-5">
+  <div class="card-header bg-primary text-light">
+      <h4>ADD TODO</h4>
+  </div>
+
+  <div class="card-body">
+      <form [formGroup]="task" (submit)="onSubmit()">
+          <div class="form-group">
+              <input type="text" name="title" class="form-control" placeholder="Title" formControlName="title" required>
+          </div>
+          <div class="form-group">
+            <input type="text" name="description" class="form-control" placeholder="" formControlName="description" required>
+          </div>
+          <!-- <div class="form-group">
+            <input type="text" name="completed" class="form-control" placeholder="" formControlName="completed" required>
+          </div> -->
+          <button class="btn btn-primary" type="submit"> ADD </button>
+      </form>
+      <!-- {{todo}} -->
+  </div>
+</div>
