@@ -4,10 +4,11 @@ import {
   HttpHandler,
   HttpEvent,
   HttpInterceptor,
-  HttpHeaders
+  HttpHeaders,
+  HttpResponse
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
-
+import { tap } from 'rxjs/operators'
 @Injectable()
 export class InterceptorInterceptor implements HttpInterceptor {
 
@@ -16,28 +17,58 @@ export class InterceptorInterceptor implements HttpInterceptor {
   // let updateRes;
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     let updateRes;
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json'
-    });
-
-    //
+    // const headers = new HttpHeaders({
+    //   'Content-Type': 'application/json'
+    // });
     if(localStorage.getItem('token') != '' && localStorage.getItem('token') != null){
 
-      const headers = new HttpHeaders({
-        'Authorization': `Bearer ${localStorage.getItem('token')}`,
-        'Content-Type': 'application/json'
-      });
-      updateRes = request.clone({ headers: headers })
+      updateRes = request.clone({ headers: request.headers.set("Authorization", "Bearer "+localStorage.getItem('token'))});
     }else{
-      const headers = new HttpHeaders({
-        'Content-Type': 'application/json'
-      });
-      updateRes = request.clone({ headers: headers })
-
-
+      updateRes = request
     }
 
-    return next.handle(updateRes);
+    //
+    // if(localStorage.getItem('token') != '' && localStorage.getItem('token') != null){
+
+    //   // updateRes = request.clone({ headers: request.headers.set("Authorization", `Bearer ${localStorage.getItem('token')}`)});
+
+    //   const headers = new HttpHeaders({
+    //     'Authorization': `Bearer ${localStorage.getItem('token')}`,
+    //   });
+    //   updateRes = request.clone({ headers: headers })
+    // }
+    // else{
+    //   const headers = new HttpHeaders({
+    //     'Content-Type': 'application/json'
+    //   });
+    //   updateRes = request.clone({ headers: headers })
+
+
+    // }
+
+    return next.handle(updateRes).pipe(
+      tap(
+        event => {
+          //logging the http response to browser's console in case of a success
+          if (event instanceof HttpResponse) {
+            if(event.headers.has('Authorization')) {
+              localStorage.setItem('token', event.headers.get('Authorization') ||'');
+              //console.log("Authorization header :", event.headers.get('Authorization'));
+            }
+            //console.log("api call success :", event);
+            // window.alert(`Success: ${event.statusText}`);
+          }
+        },
+        error => {
+          //logging the http response to browser's console in case of a failuer
+          //if (event instanceof HttpResponse) {
+            //console.log("api call error :", event.status);
+            //window.alert(`Error: ${event.status}`);
+
+         // }
+        }
+      )
+    );;
   }
 }
 

@@ -1,15 +1,22 @@
+<p>signup works!</p>
 <p>login works!</p>
 <!-- <p>add-task works!</p> -->
 <div class="card shadow text-center mb-5">
   <div class="card-header bg-primary text-light">
-      <h4>ADD TODO</h4>
+      <h4>Sign Up</h4>
   </div>
 
   <div class="card-body">
-      <form [formGroup]="loginForm" (submit)="onsubmit()">
+      <form [formGroup]="signUp" (submit)="onsubmit()">
           <div class="form-group">
-              <input type="email" name="title" class="form-control" placeholder="Title" formControlName="email" required>
+              <input type="text" name="title" class="form-control" placeholder="Name" formControlName="name" required>
           </div>
+          <div class="form-group">
+            <input type="email" name="title" class="form-control" placeholder="Title" formControlName="email" required>
+        </div>
+        <div class="form-group">
+          <input type="number" name="title" class="form-control" placeholder="age" formControlName="age" required>
+      </div>
           <div class="form-group">
             <input type="password" name="password" class="form-control" placeholder="" formControlName="password" required>
           </div>
@@ -20,5 +27,5 @@
       </form>
       <!-- {{todo}} -->
   </div>
-  <button class="btn btn-primary" (click)="signInWithGoogle()" >Sign In google</button>
+  <!-- <button class="btn btn-primary" (click)="signInWithGoogle()" >Sign In google</button> -->
 </div>

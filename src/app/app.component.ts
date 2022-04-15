@@ -14,21 +14,22 @@ export class AppComponent implements OnInit, OnChanges,DoCheck, AfterContentInit
 
   ngOnInit(): void {
     console.log("oninit call")
+    console.log("app component")
 
-      this.http.get('http://localhost:3000/users').subscribe((res)=>{
-        console.log(res);
-      })
+      // this.http.get('http://localhost:3000/users').subscribe((res)=>{
+      //   console.log(res);
+      // })
   }
 
   ngOnChanges(changes:SimpleChanges){
-    console.log("onchanges call")
+    // console.log("onchanges call")
   }
 
   ngDoCheck(): void {
-      console.log("docheck called")
+      // console.log("docheck called")
   }
   ngAfterContentInit(): void {
-      console.log("after content init")
+      // console.log("after content init")
   }
 
 }

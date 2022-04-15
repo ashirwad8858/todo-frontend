@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ApiCallingServiceService } from '../api-Service/api-calling-service.service';
 
 @Component({
   selector: 'app-task',
@@ -7,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TaskComponent implements OnInit {
 
-  constructor() { }
+  task:FormGroup;
+  constructor(private api:ApiCallingServiceService) { }
 
   ngOnInit(): void {
+
+    this.task = new FormGroup({
+      title:new FormControl(null,Validators.required),
+      description:new FormControl(null,Validators.required)
+    })
+  }
+
+  onsubmit(){
+
   }
 
 }
