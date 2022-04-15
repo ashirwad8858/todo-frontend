@@ -21,6 +21,9 @@ import {
 } from 'angularx-social-login';
 import { SignupComponent } from './signup/signup.component';
 
+
+import { MyLibModule } from 'my-lib';
+
 const routes: Route[] = [
   {path: '', redirectTo: '/', pathMatch: 'full'},
   {path: 'add', component: AddTaskComponent},
@@ -42,6 +45,7 @@ const routes: Route[] = [
     HttpClientModule,
     BrowserAnimationsModule,
     SocialLoginModule,
+    MyLibModule,
     // AgmCoreModule.forRoot({
     //   apiKey: 'AIzaSyBIsQjYQuboWOg_1g1sAmOog54Afqhe-3E',
     //   libraries: ['places']
