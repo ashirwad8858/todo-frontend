@@ -22,7 +22,6 @@ import {
 import { SignupComponent } from './signup/signup.component';
 
 
-import { MyLibModule } from 'my-lib';
 
 const routes: Route[] = [
   {path: '', redirectTo: '/', pathMatch: 'full'},
@@ -45,7 +44,7 @@ const routes: Route[] = [
     HttpClientModule,
     BrowserAnimationsModule,
     SocialLoginModule,
-    MyLibModule,
+
     // AgmCoreModule.forRoot({
     //   apiKey: 'AIzaSyBIsQjYQuboWOg_1g1sAmOog54Afqhe-3E',
     //   libraries: ['places']
