@@ -32,7 +32,7 @@ COPY package.json .
 # RUN npm install
 
 COPY . .
-RUN npm install
+RUN npm install --force
 # RUN npm run build --prod
 RUN node_modules/.bin/ng build --prod
 
