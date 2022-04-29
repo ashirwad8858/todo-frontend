@@ -20,6 +20,9 @@ import {
   FacebookLoginProvider
 } from 'angularx-social-login';
 import { SignupComponent } from './signup/signup.component';
+// import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import { CommonModule } from '@angular/common';
 
 
 
@@ -44,6 +47,11 @@ const routes: Route[] = [
     HttpClientModule,
     BrowserAnimationsModule,
     SocialLoginModule,
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    NgMultiSelectDropDownModule.forRoot(),
+    // CKEditorModule,
 
     // AgmCoreModule.forRoot({
     //   apiKey: 'AIzaSyBIsQjYQuboWOg_1g1sAmOog54Afqhe-3E',
